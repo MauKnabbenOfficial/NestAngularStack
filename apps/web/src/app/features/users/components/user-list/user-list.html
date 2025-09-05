@@ -1,0 +1,35 @@
+<div>
+  <mat-toolbar color="primary" class="toolbar">
+    <a mat-raised-button color="accent" routerLink="/users/new">
+      <mat-icon>person_add</mat-icon>
+      Novo Usuário
+    </a>
+  </mat-toolbar>
+
+  <div class="container">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Usuários</mat-card-title>
+        <mat-card-subtitle>Lista atual</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content>
+        @for (user of users; track user.id) {
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListItemIcon>person</mat-icon>
+            <div matListItemTitle>{{ user.name }}</div>
+            <div matListItemLine>{{ user.email }}</div>
+          </mat-list-item>
+        </mat-list>
+        } @empty {
+        <mat-card appearance="outlined" class="empty">
+          <mat-card-content>Nenhum usuário cadastrado.</mat-card-content>
+        </mat-card>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

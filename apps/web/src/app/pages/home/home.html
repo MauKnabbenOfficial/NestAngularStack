@@ -1,0 +1,119 @@
+<section class="hero">
+  <div class="hero__panel">
+    <h1>Projeto Experimental</h1>
+    <p>
+      Stack moderna com <strong>NestJS</strong> + <strong>Angular</strong> +
+      <strong>PostgreSQL</strong> + <strong>MongoDB</strong>, orquestrada com
+      <strong>Docker</strong> e <strong>Docker Compose</strong>.
+    </p>
+
+    <div class="hero__actions">
+      <a mat-raised-button color="primary" routerLink="/users">
+        <mat-icon>group</mat-icon>
+        Usuários
+      </a>
+      <a mat-outlined-button color="primary" routerLink="/docs">
+        <mat-icon>description</mat-icon>
+        Docs do Projeto
+      </a>
+    </div>
+
+    <mat-chip-set class="hero__chips">
+      <mat-chip class="chip"> <mat-icon>code</mat-icon> NestJS </mat-chip>
+      <mat-chip class="chip"> <mat-icon>web</mat-icon> Angular </mat-chip>
+      <mat-chip class="chip"> <mat-icon>storage</mat-icon> PostgreSQL </mat-chip>
+      <mat-chip class="chip"> <mat-icon>dns</mat-icon> MongoDB </mat-chip>
+      <mat-chip class="chip"> <mat-icon>developer_board</mat-icon> Docker </mat-chip>
+      <mat-chip class="chip"> <mat-icon>view_in_ar</mat-icon> Docker Compose </mat-chip>
+    </mat-chip-set>
+  </div>
+</section>
+
+<section class="cta">
+  <mat-card appearance="outlined">
+    <mat-card-content class="cta__row">
+      <div>
+        <h2>Suba tudo com um comando</h2>
+        <p>Ambiente dev isolado com bancos e serviços orquestrados.</p>
+      </div>
+      <a mat-raised-button color="primary" routerLink="/getting-started">
+        <mat-icon>rocket_launch</mat-icon>
+        Getting Started
+      </a>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<!-- <section class="hero">
+  <div class="hero__content">
+    <h1>Projeto Experimental</h1>
+    <p>
+      Stack moderna com <strong>NestJS</strong> + <strong>Angular</strong> +
+      <strong>PostgreSQL</strong> + <strong>MongoDB</strong>, orquestrada com
+      <strong>Docker</strong> e <strong>Docker Compose</strong>.
+    </p>
+
+    <div class="hero__actions">
+      <a mat-raised-button color="primary" routerLink="/users">
+        <mat-icon>group</mat-icon>
+        Usuários
+      </a>
+      <a mat-stroked-button color="accent" routerLink="/docs">
+        <mat-icon>description</mat-icon>
+        Docs do Projeto
+      </a>
+    </div>
+
+    <mat-chip-set class="hero__chips">
+      @for (t of techs; track t.label) {
+      <mat-chip selected>
+        <mat-icon>{{ t.icon }}</mat-icon>
+        {{ t.label }}
+      </mat-chip>
+      }
+    </mat-chip-set>
+  </div>
+</section> -->
+
+<!-- <section class="grid">
+  @for (f of features; track f.title) {
+  <mat-card appearance="outlined" class="card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon class="card__icon">{{ f.icon }}</mat-icon>
+        {{ f.title }}
+      </mat-card-title>
+      <mat-card-subtitle>Camada pronta para produção</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <p>{{ f.desc }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <a mat-button color="primary" [routerLink]="f.link">{{ f.cta }}</a>
+    </mat-card-actions>
+  </mat-card>
+  } @empty {
+  <mat-card appearance="outlined">
+    <mat-card-content>Nenhum módulo disponível.</mat-card-content>
+  </mat-card>
+  }
+</section>
+
+<section class="cta">
+  <mat-card appearance="outlined">
+    <mat-card-content class="cta__row">
+      <div>
+        <h2>Suba tudo com um comando</h2>
+        <p>Ambiente dev isolado com bancos e serviços orquestrados.</p>
+      </div>
+      <a mat-raised-button color="primary" routerLink="/getting-started">
+        <mat-icon>rocket_launch</mat-icon>
+        Getting Started
+      </a>
+    </mat-card-content>
+  </mat-card>
+</section> -->

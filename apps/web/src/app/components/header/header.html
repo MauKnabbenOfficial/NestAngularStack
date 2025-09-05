@@ -1,0 +1,47 @@
+<mat-toolbar color="primary" class="header">
+  <!-- Botão de menu hamburguer -->
+  <button mat-icon-button [matMenuTriggerFor]="mainMenu" aria-label="Menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #mainMenu="matMenu">
+    <button mat-menu-item routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item routerLink="/users">
+      <mat-icon>group</mat-icon>
+      <span>Usuários</span>
+    </button>
+    <button mat-menu-item routerLink="/courses">
+      <mat-icon>menu_book</mat-icon>
+      <span>Cursos</span>
+    </button>
+    <button mat-menu-item routerLink="/enrollments">
+      <mat-icon>assignment_ind</mat-icon>
+      <span>Matrículas</span>
+    </button>
+  </mat-menu>
+
+  <span class="brand" routerLink="/">Minha App</span>
+
+  <span class="spacer"></span>
+
+  <!-- Menu do usuário -->
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Conta">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/profile">
+      <mat-icon>person</mat-icon>
+      <span>Perfil</span>
+    </button>
+    <button mat-menu-item routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+      <span>Configurações</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Sair</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

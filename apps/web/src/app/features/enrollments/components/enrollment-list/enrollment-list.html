@@ -1,0 +1,35 @@
+<div>
+  <mat-toolbar color="primary" class="toolbar">
+    <a mat-raised-button color="accent" routerLink="/enrollments/new">
+      <mat-icon>assignment_ind</mat-icon>
+      Nova Matrícula
+    </a>
+  </mat-toolbar>
+
+  <div class="container">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Matrículas</mat-card-title>
+        <mat-card-subtitle>Lista atual</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content>
+        @for (item of enrollments; track item.courseId) {
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListItemIcon>assignment_ind</mat-icon>
+            <div matListItemTitle>{{ item.userId }}</div>
+            <div matListItemLine>{{ item.courseId }}</div>
+          </mat-list-item>
+        </mat-list>
+        } @empty {
+        <mat-card appearance="outlined" class="empty">
+          <mat-card-content>Nenhuma matrícula cadastrada.</mat-card-content>
+        </mat-card>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
