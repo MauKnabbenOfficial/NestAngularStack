@@ -12,13 +12,25 @@ export interface Course {
 })
 export class UsersService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/users`;
+  private apiUrl = `${environment.apiUrl}/courses`;
 
   getAll() {
     return this.http.get<Course[]>(this.apiUrl);
   }
 
-  insert(data: { id: number; title: string }) {
+  getCourseById(courseId: number) {
+    return this.http.get<Course>(`${this.apiUrl}/${courseId}`);
+  }
+
+  createCourse(data: Course) {
     return this.http.post<Course>(this.apiUrl, data);
+  }
+
+  deleteCourse(courseId: number) {
+    return this.http.delete(`${this.apiUrl}/${courseId}`);
+  }
+
+  updateCourse(courseId: number, data: Course) {
+    return this.http.patch<Course>(`${this.apiUrl}/${courseId}`, data);
   }
 }

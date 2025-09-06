@@ -28,12 +28,12 @@ export class EnrollmentList implements OnInit {
   // private usersService = inject(UsersService);
   enrollments: Enrollments[] = [];
   ngOnInit(): void {
-    this.enrollments.push(
-      { courseId: 1, userId: 1 },
-      { courseId: 2, userId: 2 },
-      { courseId: 3, userId: 3 },
-      { courseId: 4, userId: 4 },
-      { courseId: 5, userId: 5 }
-    );
+    // this.enrollments.push(
+    //   { courseId: 1, userId: 1 },
+    //   { courseId: 2, userId: 2 },
+    //   { courseId: 3, userId: 3 },
+    //   { courseId: 4, userId: 4 },
+    //   { courseId: 5, userId: 5 }
+    // );
   }
 }

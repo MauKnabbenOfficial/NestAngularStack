@@ -16,19 +16,39 @@
       <mat-divider></mat-divider>
 
       <mat-card-content>
-        @for (user of users; track user.id) {
         <mat-list>
+          @for (user of users; track user.id) {
           <mat-list-item>
             <mat-icon matListItemIcon>person</mat-icon>
             <div matListItemTitle>{{ user.name }}</div>
             <div matListItemLine>{{ user.email }}</div>
+
+            <!-- matListItemMeta: diretiva do Angular Material para colocar conteúdo no final de um item da lista -->
+            <div matListItemMeta class="list-actions">
+              <a
+                mat-icon-button
+                color="primary"
+                [routerLink]="['/users', user.id, 'edit']"
+                aria-label="Editar usuário"
+              >
+                <mat-icon>edit</mat-icon>
+              </a>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteUser(user.id, user.name)"
+                aria-label="Excluir usuário"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </mat-list-item>
+          } @empty {
+          <mat-card appearance="outlined" class="empty">
+            <mat-card-content>Nenhum usuário cadastrado.</mat-card-content>
+          </mat-card>
+          }
         </mat-list>
-        } @empty {
-        <mat-card appearance="outlined" class="empty">
-          <mat-card-content>Nenhum usuário cadastrado.</mat-card-content>
-        </mat-card>
-        }
       </mat-card-content>
     </mat-card>
   </div>
