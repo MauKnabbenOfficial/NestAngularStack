@@ -16,19 +16,39 @@
       <mat-divider></mat-divider>
 
       <mat-card-content>
-        @for (item of enrollments; track item.courseId) {
         <mat-list>
+          @for (enrollment of enrollments; track enrollment.id) {
           <mat-list-item>
             <mat-icon matListItemIcon>assignment_ind</mat-icon>
-            <div matListItemTitle>{{ item.userId }}</div>
-            <div matListItemLine>{{ item.courseId }}</div>
+            <div matListItemTitle>Curso: {{ enrollment.course.title }}</div>
+            <div matListItemLine>Usuário: {{ enrollment.user.name }}</div>
+
+            <!-- matListItemMeta: diretiva do Angular Material para colocar conteúdo no final de um item da lista -->
+            <div matListItemMeta class="list-actions">
+              <a
+                mat-icon-button
+                color="primary"
+                [routerLink]="['/enrollments', enrollment.id, 'edit']"
+                aria-label="Editar matrícula"
+              >
+                <mat-icon>edit</mat-icon>
+              </a>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteEnrollment(enrollment.id)"
+                aria-label="Excluir matrícula"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </mat-list-item>
+          } @empty {
+          <mat-card appearance="outlined" class="empty">
+            <mat-card-content>Nenhuma matrícula cadastrada.</mat-card-content>
+          </mat-card>
+          }
         </mat-list>
-        } @empty {
-        <mat-card appearance="outlined" class="empty">
-          <mat-card-content>Nenhuma matrícula cadastrada.</mat-card-content>
-        </mat-card>
-        }
       </mat-card-content>
     </mat-card>
   </div>
