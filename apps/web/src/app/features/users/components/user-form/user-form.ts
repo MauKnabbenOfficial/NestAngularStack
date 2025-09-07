@@ -90,9 +90,6 @@ export class UserForm implements OnInit, OnDestroy {
   }
 
   private create(data: CreateUser) {
-    console.log('create', data);
-    this.snackBar.open('Usuário criado com sucesso!', 'Fechar', { duration: 3000 });
-    return;
     this.usersService
       .createUser(data)
       .pipe(takeUntil(this.destroy$))
@@ -112,9 +109,6 @@ export class UserForm implements OnInit, OnDestroy {
   }
 
   private update(id: string, data: UpdateUser) {
-    console.log('update', data);
-    this.snackBar.open('Usuário atualizado com sucesso!', 'Fechar', { duration: 3000 });
-    return;
     this.usersService
       .updateUser(id, data)
       .pipe(takeUntil(this.destroy$))

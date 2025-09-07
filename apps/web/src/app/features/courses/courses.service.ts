@@ -1,16 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/environments';
-
-export interface Course {
-  id: number;
-  title: string;
-}
+import { Course, CreateCourse, UpdateCourse } from './course.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class CoursesService {
   private http = inject(HttpClient);
   private apiUrl = `${environment.apiUrl}/courses`;
 
@@ -18,19 +14,19 @@ export class UsersService {
     return this.http.get<Course[]>(this.apiUrl);
   }
 
-  getCourseById(courseId: number) {
+  getCourseById(courseId: string) {
     return this.http.get<Course>(`${this.apiUrl}/${courseId}`);
   }
 
-  createCourse(data: Course) {
+  createCourse(data: CreateCourse) {
     return this.http.post<Course>(this.apiUrl, data);
   }
 
-  deleteCourse(courseId: number) {
+  deleteCourse(courseId: string) {
     return this.http.delete(`${this.apiUrl}/${courseId}`);
   }
 
-  updateCourse(courseId: number, data: Course) {
+  updateCourse(courseId: string, data: UpdateCourse) {
     return this.http.patch<Course>(`${this.apiUrl}/${courseId}`, data);
   }
 }

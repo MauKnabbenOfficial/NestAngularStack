@@ -1,1 +1,47 @@
-<p>enrollment-form works!</p>
+<mat-toolbar color="primary">
+  <span>{{ isEditMode ? 'Editar Matrícula' : 'Editar Usuário' }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Dados da Matrícula</mat-card-title>
+      <mat-card-subtitle>Preencha as informações abaixo</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" class="form-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Aluno</mat-label>
+          <mat-select formControlName="userId" required>
+            @for (user of users; track user.id) {
+            <mat-option [value]="user.id">{{ user.name }}</mat-option>
+            }
+          </mat-select>
+          @if (form.get('userId')?.invalid && form.get('userId')?.touched) {
+          <mat-error>Selecione um aluno.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="courseId" required>
+            @for (course of courses; track course.id) {
+            <mat-option [value]="course.id">{{ course.title }}</mat-option>
+            }
+          </mat-select>
+          @if (form.get('courseId')?.invalid && form.get('courseId')?.touched) {
+          <mat-error>Selecione um curso.</mat-error>
+          }
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-stroked-button color="warn" (click)="cancel()">Cancelar</button>
+      <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+        Salvar Matrícula
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

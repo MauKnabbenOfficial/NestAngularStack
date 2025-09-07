@@ -16,19 +16,39 @@
       <mat-divider></mat-divider>
 
       <mat-card-content>
-        @for (item of courses; track item.id) {
         <mat-list>
+          @for (course of courses; track course.id) {
           <mat-list-item>
             <mat-icon matListItemIcon>menu_book</mat-icon>
-            <div matListItemTitle>{{ item.id }}</div>
-            <div matListItemLine>{{ item.title }}</div>
+            <div matListItemTitle>{{ course.title }}</div>
+            <!-- <div matListItemLine>{{ course.email }}</div> -->
+
+            <!-- matListItemMeta: diretiva do Angular Material para colocar conteúdo no final de um item da lista -->
+            <div matListItemMeta class="list-actions">
+              <a
+                mat-icon-button
+                color="primary"
+                [routerLink]="['/courses', course.id, 'edit']"
+                aria-label="Editar curso"
+              >
+                <mat-icon>edit</mat-icon>
+              </a>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteCourse(course.id, course.title)"
+                aria-label="Excluir curso"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </mat-list-item>
+          } @empty {
+          <mat-card appearance="outlined" class="empty">
+            <mat-card-content>Nenhum curso cadastrado.</mat-card-content>
+          </mat-card>
+          }
         </mat-list>
-        } @empty {
-        <mat-card appearance="outlined" class="empty">
-          <mat-card-content>Nenhum curso cadastrado.</mat-card-content>
-        </mat-card>
-        }
       </mat-card-content>
     </mat-card>
   </div>

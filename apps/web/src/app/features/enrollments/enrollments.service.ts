@@ -1,12 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/environments';
-
-export interface Enrollments {
-  id: number;
-  userId: number;
-  courseId: number;
-}
+import { CreateEnrollment, Enrollments, UpdateEnrollment } from './enrollment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +18,7 @@ export class EnrollmentsService {
     return this.http.get<Enrollments>(`${this.apiUrl}/${enrollmentId}`);
   }
 
-  createEnrollment(enrollmentData: Enrollments) {
+  createEnrollment(enrollmentData: CreateEnrollment) {
     return this.http.post<Enrollments>(this.apiUrl, enrollmentData);
   }
 
@@ -31,7 +26,7 @@ export class EnrollmentsService {
     return this.http.delete(`${this.apiUrl}/${enrollmentId}`);
   }
 
-  updateEnrollment(enrollmentId: string, enrollmentData: Enrollments) {
+  updateEnrollment(enrollmentId: string, enrollmentData: UpdateEnrollment) {
     return this.http.patch<Enrollments>(`${this.apiUrl}/${enrollmentId}`, enrollmentData);
   }
 }
