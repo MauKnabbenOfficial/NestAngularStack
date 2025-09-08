@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
 
   api:
-    container_name: nest-api
+    # container_name: nest-api comentado pois o docker nao aceita nome de container personalizado para subir mais de um (load balancer)
     image: nest-api
     build:
       context: ./apps/api
