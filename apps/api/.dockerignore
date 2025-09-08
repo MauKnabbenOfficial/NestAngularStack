@@ -1,0 +1,36 @@
+# Arquivos de dependência do Git que não são necessários no build
+.git
+.gitignore
+.dockerignore
+
+# Dependências do Node, que devem ser instaladas DENTRO do container
+node_modules
+
+# Arquivos de build gerados localmente. O build deve acontecer DENTRO do container.
+dist
+build
+
+# Logs e arquivos de depuração
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Arquivos de ambiente locais. As variáveis de ambiente devem ser
+# injetadas no container, e não copiadas.
+# comentado apenas para teste!
+#.env* 
+
+# Pastas de configuração de IDEs
+.vscode
+.idea
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de teste e cobertura, não necessários na imagem de produção
+test
+coverage
+jest-e2e.json

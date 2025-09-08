@@ -1,0 +1,70 @@
+services:
+  api:
+    container_name: nest-api
+    image: nest-api
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" 
+    env_file:
+      - ./apps/api/.env
+    depends_on:
+      db:
+        condition: service_healthy
+      mongo:
+        condition: service_started
+    networks:
+      - nest-app-network
+    #restart: unless-stopped -> sempre reiniciar o container automaticamente, a menos que ele tenha sido explicitamente parado 
+
+  web:
+    container_name: nest-web
+    image: nest-web
+    ports:
+      - "4200:4200" 
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    networks:
+      - nest-app-network
+    #restart: unless-stopped -> sempre reiniciar o container automaticamente, a menos que ele tenha sido explicitamente parado 
+
+  db:
+    container_name: pg
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dbPostgresApp
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" #  expor pro host testar
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d dbPostgresApp"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - nest-app-network
+    #restart: unless-stopped -> sempre reiniciar o container automaticamente, a menos que ele tenha sido explicitamente parado 
+
+  mongo:
+    container_name: mongo
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    networks:
+      - nest-app-network
+    #restart: unless-stopped -> sempre reiniciar o container automaticamente, a menos que ele tenha sido explicitamente parado 
+
+volumes:
+  pgdata:
+  mongodata:
+
+networks:
+    nest-app-network:
+        driver: bridge

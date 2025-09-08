@@ -24,7 +24,7 @@ import { UsersModule } from './users/users.module';
     // }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.PGHOST,
+      host: process.env.PGHOST_DOCKER,
       port: parseInt(process.env.PGPORT!, 10) || 5432,
       database: process.env.PGDATABASE,
       username: process.env.PGUSER,
@@ -35,7 +35,7 @@ import { UsersModule } from './users/users.module';
       // ssl: true,
       // extra: { ssl: { rejectUnauthorized: false } }, // se precisar ignorar CA em dev - Certificate Authority (autoridade que assina o certificado TLS do servidor).
     }),
-    MongooseModule.forRoot(process.env.MONGO_URL!),
+    MongooseModule.forRoot(process.env.MONGO_URL_DOCKER!),
     UsersModule,
     CoursesModule,
     EnrollmentsModule,
