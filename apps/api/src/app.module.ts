@@ -1,16 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User } from './users/entities/user.entity';
-import { Course } from './courses/entities/course.entity';
-import { Enrollment } from './enrollments/entities/enrollment.entity';
 import { EventsModule } from './events/events.module';
 import { CoursesModule } from './courses/courses.module';
 import { EnrollmentsModule } from './enrollments/enrollments.module';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -40,6 +36,7 @@ import { UsersModule } from './users/users.module';
     CoursesModule,
     EnrollmentsModule,
     EventsModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
