@@ -42,4 +42,15 @@ export class UsersService {
     const user = await this.findOne(id);
     await this.repo.remove(user);
   }
+
+  async findOneByEmail(email: string): Promise<User | undefined> {
+    const user = await this.repo
+      .createQueryBuilder('user')
+      .addSelect('user.password')
+      .where('user.email = :email', { email })
+      .getOne();
+
+    if (user) return user;
+    else return undefined;
+  }
 }

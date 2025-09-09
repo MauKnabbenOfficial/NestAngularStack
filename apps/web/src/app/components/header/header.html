@@ -1,4 +1,5 @@
 <mat-toolbar color="primary" class="header">
+  @if(authService.isLoggedIn()){
   <!-- Botão de menu hamburguer -->
   <button mat-icon-button [matMenuTriggerFor]="mainMenu" aria-label="Menu">
     <mat-icon>menu</mat-icon>
@@ -21,11 +22,13 @@
       <span>Matrículas</span>
     </button>
   </mat-menu>
+  }
 
   <span class="brand" routerLink="/">Minha App</span>
 
   <span class="spacer"></span>
 
+  @if (authService.isLoggedIn()) {
   <!-- Menu do usuário -->
   <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Conta">
     <mat-icon>account_circle</mat-icon>
@@ -44,4 +47,9 @@
       <span>Sair</span>
     </button>
   </mat-menu>
+  }@else {
+  <a mat-button routerLink="/login">
+    <mat-icon>login</mat-icon>
+    Login / Cadastro </a
+  >}
 </mat-toolbar>
