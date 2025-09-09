@@ -1,0 +1,51 @@
+<div class="auth-container">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab label="Login">
+          <form [formGroup]="loginForm" (ngSubmit)="login()" class="auth-form">
+            <h2>Acessar o Sistema</h2>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Senha</mat-label>
+              <input matInput formControlName="password" type="password" required />
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+              Entrar
+            </button>
+          </form>
+        </mat-tab>
+
+        <mat-tab label="Registrar">
+          <form [formGroup]="registerForm" (ngSubmit)="register()" class="auth-form">
+            <h2>Criar Nova Conta</h2>
+            <mat-form-field>
+              <mat-label>Nome</mat-label>
+              <input matInput formControlName="name" required />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Senha</mat-label>
+              <input matInput formControlName="password" type="password" required />
+              <mat-hint>Mínimo de 8 caracteres.</mat-hint>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="accent"
+              type="submit"
+              [disabled]="registerForm.invalid"
+            >
+              Registrar
+            </button>
+          </form>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>
